@@ -51,3 +51,4 @@ local.properties
 ehthumbs.db
 Thumbs.db
 !/app/build/
+!/.idea/
