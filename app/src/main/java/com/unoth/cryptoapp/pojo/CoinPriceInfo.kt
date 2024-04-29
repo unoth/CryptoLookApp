@@ -1,6 +1,7 @@
 package com.unoth.cryptoapp.pojo
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -15,6 +16,7 @@ data class CoinPriceInfo(
     @Expose
     val market: String?,
 
+    @PrimaryKey
     @SerializedName("FROMSYMBOL")
     @Expose
     val fromsymbol: String,
