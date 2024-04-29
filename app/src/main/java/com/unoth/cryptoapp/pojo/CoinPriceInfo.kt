@@ -1,7 +1,10 @@
 package com.unoth.cryptoapp.pojo
 
+import androidx.room.Entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+
+@Entity(tableName = "full_price_list")
 
 data class CoinPriceInfo(
     @SerializedName("TYPE")
