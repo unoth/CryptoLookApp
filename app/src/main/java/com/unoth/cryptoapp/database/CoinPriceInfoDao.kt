@@ -10,7 +10,7 @@ import com.unoth.cryptoapp.pojo.CoinPriceInfo
 @Dao
 interface CoinPriceInfoDao {
     @Query("SELECT * FROM full_price_list ORDER BY lastupdate")
-    fun getPriceList(): LiveData<List<CoinPriceInfoDao>>
+    fun getPriceList(): LiveData<List<CoinPriceInfo>>
 
     @Query("SELECT * FROM full_price_list WHERE fromsymbol == :fSym LIMIT 1")
     fun getPriceInfoAboutCoin(fSym: String): LiveData<CoinPriceInfo>
