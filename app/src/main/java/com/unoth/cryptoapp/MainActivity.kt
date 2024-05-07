@@ -1,10 +1,12 @@
 package com.unoth.cryptoapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +23,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        viewModel.loadData()
+
+//        viewModel.priceList.observe(this, Observer {
+//            Log.d("TEST_OF_LOADING_DATA", "Success in activity: $it")
+//        })
+
+        viewModel.getDetailInfo("BTC").observe(this, Observer {
+            Log.d("TEST_OF_LOADING_DATA","Success in activity: $it" )
+        })
+
     }
 
 
