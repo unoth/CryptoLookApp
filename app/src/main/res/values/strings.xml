@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CryptoApp</string>
     <string name="symbol_template">%s / %s</string>
+    <string name="price_template">%.9f</string>
     <string name="last_update_template">Last update time: %s</string>
 </resources>
