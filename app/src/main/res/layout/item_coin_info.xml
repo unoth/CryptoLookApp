@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#3D3548">
 
         <ImageView
             android:id="@+id/ivLogoCoin"
@@ -26,9 +27,9 @@
             android:id="@+id/tvSym"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tvPrice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,8 +40,8 @@
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textColor="@color/black"
+            android:padding="8dp"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/tvUpdate"
@@ -53,11 +54,10 @@
             android:id="@+id/tvUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPrice"
             tools:text="Время последнего обновления: 21:43:21" />
 
