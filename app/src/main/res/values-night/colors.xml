@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="background_card">#3D3548</color>
-    <color name="background">#201C25</color>
-    <color name="text_color_coin">#BB86FC</color>
-    <color name="text_color_currency">#03DAC5</color>
-    <color name="text_color_min_price">#CF6679</color>
-    <color name="text_color_max_price">#018786</color>
-</resources>
