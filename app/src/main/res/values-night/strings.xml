@@ -1,8 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CryptoApp</string>
-    <string name="symbol_template">%s / %s</string>
-    <string name="price_template">%.9f</string>
-    <string name="last_update_template">Last update time: %s</string>
     <string name="slash">/</string>
     <string name="price_label">Price:</string>
     <string name="minimum_price_label">Minimum price (per day):</string>
