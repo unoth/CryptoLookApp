@@ -1,4 +1,4 @@
-package com.unoth.cryptoapp
+package com.unoth.cryptoapp.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
+import com.unoth.cryptoapp.R
 import com.unoth.cryptoapp.databinding.ActivityCoinDetailBinding
 
 class CoinDetailActivity : AppCompatActivity() {

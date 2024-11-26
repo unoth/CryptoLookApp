@@ -1,14 +1,14 @@
-package com.unoth.cryptoapp
+package com.unoth.cryptoapp.presentation
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.google.gson.Gson
-import com.unoth.cryptoapp.api.ApiFactory
-import com.unoth.cryptoapp.database.AppDatabase
-import com.unoth.cryptoapp.pojo.CoinPriceInfo
-import com.unoth.cryptoapp.pojo.CoinPriceInfoRawData
+import com.unoth.cryptoapp.data.network.ApiFactory
+import com.unoth.cryptoapp.data.database.AppDatabase
+import com.unoth.cryptoapp.data.model.CoinPriceInfo
+import com.unoth.cryptoapp.data.model.CoinPriceInfoRawData
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
