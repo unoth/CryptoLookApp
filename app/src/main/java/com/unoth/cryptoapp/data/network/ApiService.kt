@@ -1,7 +1,7 @@
-package com.unoth.cryptoapp.api
+package com.unoth.cryptoapp.data.network
 
-import com.unoth.cryptoapp.pojo.CoinInfoListOfData
-import com.unoth.cryptoapp.pojo.CoinPriceInfoRawData
+import com.unoth.cryptoapp.data.model.CoinInfoListOfData
+import com.unoth.cryptoapp.data.model.CoinPriceInfoRawData
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

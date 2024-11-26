@@ -1,4 +1,4 @@
-package com.unoth.cryptoapp.adapters
+package com.unoth.cryptoapp.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.unoth.cryptoapp.R
 import com.unoth.cryptoapp.databinding.ItemCoinInfoBinding
-import com.unoth.cryptoapp.pojo.CoinPriceInfo
+import com.unoth.cryptoapp.data.model.CoinPriceInfo
 
 class CoinInfoAdapter(private val context: Context) :
     RecyclerView.Adapter<CoinInfoAdapter.CoinInfoViewHolder>() {

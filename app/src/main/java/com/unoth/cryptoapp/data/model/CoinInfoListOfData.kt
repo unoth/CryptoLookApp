@@ -1,4 +1,4 @@
-package com.unoth.cryptoapp.pojo
+package com.unoth.cryptoapp.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
