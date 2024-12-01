@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.google.gson.Gson
-import com.unoth.cryptoapp.data.network.ApiFactory
 import com.unoth.cryptoapp.data.database.AppDatabase
+import com.unoth.cryptoapp.data.network.ApiFactory
 import com.unoth.cryptoapp.data.network.model.CoinInfoDto
 import com.unoth.cryptoapp.data.network.model.CoinInfoJsonContainerDto
 import io.reactivex.rxjava3.disposables.CompositeDisposable
