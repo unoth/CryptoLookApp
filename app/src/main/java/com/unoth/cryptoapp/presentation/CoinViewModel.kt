@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import com.unoth.cryptoapp.data.network.ApiFactory
 import com.unoth.cryptoapp.data.database.AppDatabase
 import com.unoth.cryptoapp.data.network.model.CoinInfoDto
-import com.unoth.cryptoapp.data.network.model.CoinInfoJsonDto
+import com.unoth.cryptoapp.data.network.model.CoinInfoJsonContainerDto
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -46,9 +46,9 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
         compositeDisposable.add(disposable)
     }
 
-    private fun getPriceListFromRawData(coinInfoJsonDto: CoinInfoJsonDto): List<CoinInfoDto> {
+    private fun getPriceListFromRawData(coinInfoJsonContainerDto: CoinInfoJsonContainerDto): List<CoinInfoDto> {
         val result = ArrayList<CoinInfoDto>()
-        val jsonObject = coinInfoJsonDto.json ?: return result
+        val jsonObject = coinInfoJsonContainerDto.json ?: return result
         val coinKeySet = jsonObject.keySet()
         for (coinKey in coinKeySet) {
             val currencyJson = jsonObject.getAsJsonObject(coinKey)

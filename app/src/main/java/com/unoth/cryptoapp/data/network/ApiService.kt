@@ -1,7 +1,7 @@
 package com.unoth.cryptoapp.data.network
 
 import com.unoth.cryptoapp.data.network.model.CoinNamesListDto
-import com.unoth.cryptoapp.data.network.model.CoinInfoJsonDto
+import com.unoth.cryptoapp.data.network.model.CoinInfoJsonContainerDto
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -19,7 +19,7 @@ interface ApiService {
         @Query(QUERY_PARAM_API_KEY) apiKey: String = API_KEY,
         @Query(QUERY_PARAM_FROM_SYMBOLS) fSyms: String,
         @Query(QUERY_PARAM_TO_SYMBOLS) tSyms: String = CURRENCY
-    ): Single<CoinInfoJsonDto>
+    ): Single<CoinInfoJsonContainerDto>
 
     companion object {
         private const val API_KEY =
