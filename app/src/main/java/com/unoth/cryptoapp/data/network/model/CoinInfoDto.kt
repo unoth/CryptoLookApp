@@ -1,4 +1,4 @@
-package com.unoth.cryptoapp.data.model
+package com.unoth.cryptoapp.data.network.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,7 +9,7 @@ import com.unoth.cryptoapp.utils.convertTimestampToTime
 
 @Entity(tableName = "full_price_list")
 
-data class CoinPriceInfo(
+data class CoinInfoDto(
     @SerializedName("TYPE")
     @Expose
     val type: String?,

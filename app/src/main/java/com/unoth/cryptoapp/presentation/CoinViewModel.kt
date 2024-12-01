@@ -7,8 +7,8 @@ import androidx.lifecycle.LiveData
 import com.google.gson.Gson
 import com.unoth.cryptoapp.data.network.ApiFactory
 import com.unoth.cryptoapp.data.database.AppDatabase
-import com.unoth.cryptoapp.data.model.CoinPriceInfo
-import com.unoth.cryptoapp.data.model.CoinPriceInfoRawData
+import com.unoth.cryptoapp.data.network.model.CoinInfoDto
+import com.unoth.cryptoapp.data.network.model.CoinInfoJsonDto
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
@@ -20,7 +20,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     private val compositeDisposable = CompositeDisposable()
 
     val priceList = db.coinPriceInfoDao().getPriceList()
-    fun getDetailInfo(fSym: String): LiveData<CoinPriceInfo> {
+    fun getDetailInfo(fSym: String): LiveData<CoinInfoDto> {
         return db.coinPriceInfoDao().getPriceInfoAboutCoin(fSym)
     }
 
@@ -30,7 +30,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun loadData() {
         val disposable = ApiFactory.apiService.getTopCoinsInfo()
-            .map { it.data?.map { it.coinInfo?.name }?.joinToString(",").toString() }
+            .map { it.names?.map { it.coinNameDto?.name }?.joinToString(",").toString() }
             .flatMap { ApiFactory.apiService.getFullPriceList(fSyms = it) }
             .map { getPriceListFromRawData(it) }
             .delaySubscription(15, TimeUnit.SECONDS)
@@ -46,9 +46,9 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
         compositeDisposable.add(disposable)
     }
 
-    private fun getPriceListFromRawData(coinPriceInfoRawData: CoinPriceInfoRawData): List<CoinPriceInfo> {
-        val result = ArrayList<CoinPriceInfo>()
-        val jsonObject = coinPriceInfoRawData.coinPriceInfoJsonObject ?: return result
+    private fun getPriceListFromRawData(coinInfoJsonDto: CoinInfoJsonDto): List<CoinInfoDto> {
+        val result = ArrayList<CoinInfoDto>()
+        val jsonObject = coinInfoJsonDto.json ?: return result
         val coinKeySet = jsonObject.keySet()
         for (coinKey in coinKeySet) {
             val currencyJson = jsonObject.getAsJsonObject(coinKey)
@@ -56,7 +56,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
             for (currencyKey in currencyKeySet) {
                 val priceInfo = Gson().fromJson(
                     currencyJson.getAsJsonObject(currencyKey),
-                    CoinPriceInfo::class.java
+                    CoinInfoDto::class.java
                 )
                 result.add(priceInfo)
             }
