@@ -42,7 +42,7 @@ class CoinMapper {
         return namesListDto.names?.map { it.coinNameDto?.name }?.joinToString(",") ?: ""
     }
 
-    fun dbModelToEntity(dbModel: CoinInfoDbModel) = CoinInfo(
+    fun mapDbModelToEntity(dbModel: CoinInfoDbModel) = CoinInfo(
         fromsymbol = dbModel.fromsymbol,
         tosymbol = dbModel.tosymbol,
         lastmarket = dbModel.lastmarket,
