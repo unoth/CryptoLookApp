@@ -8,9 +8,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.unoth.cryptoapp.R
-import com.unoth.cryptoapp.presentation.adapters.CoinInfoAdapter
 import com.unoth.cryptoapp.databinding.ActivityCoinPriceListBinding
-import com.unoth.cryptoapp.data.network.model.CoinInfoDto
+import com.unoth.cryptoapp.domain.CoinInfo
+import com.unoth.cryptoapp.presentation.adapters.CoinInfoAdapter
 
 class CoinPriceListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCoinPriceListBinding
@@ -29,7 +29,7 @@ class CoinPriceListActivity : AppCompatActivity() {
         }
         val adapter = CoinInfoAdapter(this)
         adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
-            override fun onCoinClick(coinPriceInfo: CoinInfoDto) {
+            override fun onCoinClick(coinPriceInfo: CoinInfo) {
                 val intent = CoinDetailActivity.newIntent(
                     this@CoinPriceListActivity,
                     coinPriceInfo.fromsymbol
@@ -39,7 +39,7 @@ class CoinPriceListActivity : AppCompatActivity() {
         }
         binding.rvCoinPriceList.adapter = adapter
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        viewModel.priceList.observe(this, Observer {
+        viewModel.coinInfoList.observe(this, Observer {
             adapter.coinInfoList = it
         })
     }
