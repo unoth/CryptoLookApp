@@ -11,9 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import com.unoth.cryptoapp.R
-import com.unoth.cryptoapp.data.network.ApiFactory.BASE_IMAGE_URL
 import com.unoth.cryptoapp.databinding.ActivityCoinDetailBinding
-import com.unoth.cryptoapp.utils.convertTimestampToTime
 
 class CoinDetailActivity : AppCompatActivity() {
 
@@ -40,10 +38,10 @@ class CoinDetailActivity : AppCompatActivity() {
                 binding.tvMinPrice.text = String.format(priceTemplate, it.lowday)
                 binding.tvMaxPrice.text = String.format(priceTemplate, it.highday)
                 binding.tvLastMarket.text = it.lastmarket
-                binding.tvLastUpdate.text = convertTimestampToTime(it.lastupdate)
+                binding.tvLastUpdate.text = it.lastupdate
                 binding.tvFromSymbol.text = it.fromsymbol
                 binding.tvToSymbol.text = it.tosymbol
-                Picasso.get().load(BASE_IMAGE_URL + it.imageurl).into(binding.ivLogoCoin)
+                Picasso.get().load(it.imageurl).into(binding.ivLogoCoin)
             })
         }
     }
