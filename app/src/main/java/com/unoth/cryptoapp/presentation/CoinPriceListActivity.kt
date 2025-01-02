@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.unoth.cryptoapp.R
 import com.unoth.cryptoapp.databinding.ActivityCoinPriceListBinding
@@ -40,9 +39,10 @@ class CoinPriceListActivity : AppCompatActivity() {
             }
         }
         binding.rvCoinPriceList.adapter = adapter
+        binding.rvCoinPriceList.itemAnimator = null
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        viewModel.coinInfoList.observe(this, Observer {
-            adapter.coinInfoList = it
-        })
+        viewModel.coinInfoList.observe(this) {
+            adapter.submitList(it)
+        }
     }
 }

@@ -3,21 +3,16 @@ package com.unoth.cryptoapp.presentation.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import com.squareup.picasso.Picasso
 import com.unoth.cryptoapp.R
 import com.unoth.cryptoapp.databinding.ItemCoinInfoBinding
 import com.unoth.cryptoapp.domain.CoinInfo
 
 class CoinInfoAdapter(private val context: Context) :
-    RecyclerView.Adapter<CoinInfoViewHolder>() {
+    ListAdapter<CoinInfo, CoinInfoViewHolder>(CoinInfoDiffCallback) {
 
     var onCoinClickListener: OnCoinClickListener? = null
-    var coinInfoList: List<CoinInfo> = listOf()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinInfoViewHolder {
         val binding =
@@ -25,9 +20,8 @@ class CoinInfoAdapter(private val context: Context) :
         return CoinInfoViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = coinInfoList.size
     override fun onBindViewHolder(holder: CoinInfoViewHolder, position: Int) {
-        val coin = coinInfoList[position]
+        val coin = getItem(position)
         with(holder.binding) {
             with(coin) {
                 val symbolTemplate = context.resources.getString(R.string.symbol_template)
