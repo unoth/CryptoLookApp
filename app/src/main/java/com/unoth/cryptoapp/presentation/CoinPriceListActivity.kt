@@ -5,7 +5,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.unoth.cryptoapp.R
 import com.unoth.cryptoapp.databinding.ActivityCoinPriceListBinding
@@ -13,12 +12,14 @@ import com.unoth.cryptoapp.domain.CoinInfo
 import com.unoth.cryptoapp.presentation.adapters.CoinInfoAdapter
 
 class CoinPriceListActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCoinPriceListBinding
     private lateinit var viewModel: CoinViewModel
+
+    private val binding by lazy {
+        ActivityCoinPriceListBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCoinPriceListBinding.inflate(layoutInflater)
         val view = binding.root
         enableEdgeToEdge()
         setContentView(view)
@@ -38,9 +39,10 @@ class CoinPriceListActivity : AppCompatActivity() {
             }
         }
         binding.rvCoinPriceList.adapter = adapter
+        binding.rvCoinPriceList.itemAnimator = null
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        viewModel.coinInfoList.observe(this, Observer {
-            adapter.coinInfoList = it
-        })
+        viewModel.coinInfoList.observe(this) {
+            adapter.submitList(it)
+        }
     }
 }

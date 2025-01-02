@@ -16,11 +16,13 @@ import com.unoth.cryptoapp.databinding.ActivityCoinDetailBinding
 class CoinDetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CoinViewModel
-    private lateinit var binding: ActivityCoinDetailBinding
+
+    private val binding by lazy {
+        ActivityCoinDetailBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCoinDetailBinding.inflate(layoutInflater)
         val view = binding.root
         enableEdgeToEdge()
         setContentView(view)
@@ -34,14 +36,16 @@ class CoinDetailActivity : AppCompatActivity() {
         if (fromSymbol != null) {
             viewModel.getDetailInfo(fromSymbol).observe(this, Observer {
                 val priceTemplate = resources.getString(R.string.price_template)
-                binding.tvPrice.text = String.format(priceTemplate, it.price)
-                binding.tvMinPrice.text = String.format(priceTemplate, it.lowday)
-                binding.tvMaxPrice.text = String.format(priceTemplate, it.highday)
-                binding.tvLastMarket.text = it.lastmarket
-                binding.tvLastUpdate.text = it.lastupdate
-                binding.tvFromSymbol.text = it.fromsymbol
-                binding.tvToSymbol.text = it.tosymbol
-                Picasso.get().load(it.imageurl).into(binding.ivLogoCoin)
+                with(binding) {
+                    tvPrice.text = String.format(priceTemplate, it.price)
+                    tvMinPrice.text = String.format(priceTemplate, it.lowday)
+                    tvMaxPrice.text = String.format(priceTemplate, it.highday)
+                    tvLastMarket.text = it.lastmarket
+                    tvLastUpdate.text = it.lastupdate
+                    tvFromSymbol.text = it.fromsymbol
+                    tvToSymbol.text = it.tosymbol
+                    Picasso.get().load(it.imageurl).into(binding.ivLogoCoin)
+                }
             })
         }
     }
