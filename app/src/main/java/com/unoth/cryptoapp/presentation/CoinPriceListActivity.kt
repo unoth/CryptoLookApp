@@ -13,12 +13,14 @@ import com.unoth.cryptoapp.domain.CoinInfo
 import com.unoth.cryptoapp.presentation.adapters.CoinInfoAdapter
 
 class CoinPriceListActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCoinPriceListBinding
     private lateinit var viewModel: CoinViewModel
+
+    private val binding by lazy {
+        ActivityCoinPriceListBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCoinPriceListBinding.inflate(layoutInflater)
         val view = binding.root
         enableEdgeToEdge()
         setContentView(view)
