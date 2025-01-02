@@ -10,7 +10,7 @@ import com.unoth.cryptoapp.databinding.ItemCoinInfoBinding
 import com.unoth.cryptoapp.domain.CoinInfo
 
 class CoinInfoAdapter(private val context: Context) :
-    RecyclerView.Adapter<CoinInfoAdapter.CoinInfoViewHolder>() {
+    RecyclerView.Adapter<CoinInfoViewHolder>() {
 
     var onCoinClickListener: OnCoinClickListener? = null
     var coinInfoList: List<CoinInfo> = listOf()
@@ -19,23 +19,16 @@ class CoinInfoAdapter(private val context: Context) :
             notifyDataSetChanged()
         }
 
-    inner class CoinInfoViewHolder(binding: ItemCoinInfoBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        val ivLogoCoin = binding.ivLogoCoin
-        val tvSym = binding.tvSym
-        val tvPrice = binding.tvPrice
-        val tvUpdate = binding.tvUpdate
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinInfoViewHolder {
-        val view = ItemCoinInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CoinInfoViewHolder(view)
+        val binding =
+            ItemCoinInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CoinInfoViewHolder(binding)
     }
 
     override fun getItemCount(): Int = coinInfoList.size
     override fun onBindViewHolder(holder: CoinInfoViewHolder, position: Int) {
         val coin = coinInfoList[position]
-        with(holder) {
+        with(holder.binding) {
             with(coin) {
                 val symbolTemplate = context.resources.getString(R.string.symbol_template)
                 val lastUpdateTemplate = context.resources.getString(R.string.last_update_template)
@@ -45,7 +38,7 @@ class CoinInfoAdapter(private val context: Context) :
                 tvUpdate.text =
                     String.format(lastUpdateTemplate, lastupdate)
                 Picasso.get().load(imageurl).into(ivLogoCoin)
-                itemView.setOnClickListener {
+                root.setOnClickListener {
                     onCoinClickListener?.onCoinClick(this)
                 }
             }
