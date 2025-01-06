@@ -15,8 +15,6 @@ import com.unoth.cryptoapp.databinding.ActivityCoinDetailBinding
 
 class CoinDetailActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: CoinViewModel
-
     private val binding by lazy {
         ActivityCoinDetailBinding.inflate(layoutInflater)
     }
@@ -31,27 +29,19 @@ class CoinDetailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-        val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYM)
-        if (fromSymbol != null) {
-            viewModel.getDetailInfo(fromSymbol).observe(this, Observer {
-                val priceTemplate = resources.getString(R.string.price_template)
-                with(binding) {
-                    tvPrice.text = String.format(priceTemplate, it.price)
-                    tvMinPrice.text = String.format(priceTemplate, it.lowday)
-                    tvMaxPrice.text = String.format(priceTemplate, it.highday)
-                    tvLastMarket.text = it.lastmarket
-                    tvLastUpdate.text = it.lastupdate
-                    tvFromSymbol.text = it.fromsymbol
-                    tvToSymbol.text = it.tosymbol
-                    Picasso.get().load(it.imageurl).into(binding.ivLogoCoin)
-                }
-            })
+        val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYM) ?: EMPTY_SYM
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, CoinDetailFragment.newInstance(fromSymbol))
+                .commit()
         }
+
     }
 
     companion object {
         private const val EXTRA_FROM_SYM = "fSym"
+        private const val EMPTY_SYM = ""
 
         fun newIntent(context: Context, fromSymbol: String): Intent {
             val intent = Intent(context, CoinDetailActivity::class.java)
