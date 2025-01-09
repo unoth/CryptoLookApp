@@ -7,9 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.squareup.picasso.Picasso
 import com.unoth.cryptoapp.R
 import com.unoth.cryptoapp.databinding.ActivityCoinDetailBinding
 
@@ -24,11 +21,12 @@ class CoinDetailActivity : AppCompatActivity() {
         val view = binding.root
         enableEdgeToEdge()
         setContentView(view)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragment_container)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYM) ?: EMPTY_SYM
         if (savedInstanceState == null) {
             supportFragmentManager
@@ -36,7 +34,6 @@ class CoinDetailActivity : AppCompatActivity() {
                 .replace(R.id.fragment_container, CoinDetailFragment.newInstance(fromSymbol))
                 .commit()
         }
-
     }
 
     companion object {
