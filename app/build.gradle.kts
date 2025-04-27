@@ -58,6 +58,9 @@ dependencies {
 
     implementation("com.squareup.picasso:picasso:2.8")
 
+    implementation ("com.google.dagger:dagger:2.56.2")
+    kapt ("com.google.dagger:dagger-compiler:2.56.2")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
