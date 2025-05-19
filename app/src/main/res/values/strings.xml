@@ -5,8 +5,8 @@
     <string name="last_update_template">Last update time: %s</string>
     <string name="slash">/</string>
     <string name="price_label">Price:</string>
-    <string name="minimum_price_label">Minimum price (per day):</string>
-    <string name="maximum_price_label">Maximum price (per day):</string>
+    <string name="minimum_price_label">Min price (per day):</string>
+    <string name="maximum_price_label">Max price (per day):</string>
     <string name="last_market_label">Last market:</string>
     <string name="last_updated_label">Last updated:</string>
 </resources>

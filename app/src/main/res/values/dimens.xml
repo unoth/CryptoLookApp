@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_primary">20sp</dimen>
+    <dimen name="text_size_primary">18sp</dimen>
     <dimen name="text_size_secondary">16sp</dimen>
     <dimen name="padding_card">8dp</dimen>
     <dimen name="padding_primary">4dp</dimen>
-    <dimen name="text_size_info_label">26sp</dimen>
+    <dimen name="text_size_info_label">24sp</dimen>
     <dimen name="padding_card_top_info">16dp</dimen>
     <dimen name="margin_label_info">32dp</dimen>
     <dimen name="margin_card">4dp</dimen>
