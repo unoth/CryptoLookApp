@@ -2,12 +2,14 @@ package com.unoth.cryptoapp.data.workers
 
 import android.content.Context
 import androidx.work.CoroutineWorker
+import androidx.work.ListenableWorker
 import androidx.work.OneTimeWorkRequest
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkerParameters
 import com.unoth.cryptoapp.data.database.CoinInfoDao
 import com.unoth.cryptoapp.data.mapper.CoinMapper
 import com.unoth.cryptoapp.data.network.ApiService
+import javax.inject.Inject
 import kotlinx.coroutines.delay
 
 class RefreshDataWorker(
@@ -41,6 +43,25 @@ class RefreshDataWorker(
 
         fun makeRequest(): OneTimeWorkRequest {
             return OneTimeWorkRequestBuilder<RefreshDataWorker>().build()
+        }
+    }
+
+    class Factory @Inject constructor(
+        private val coinInfoDao: CoinInfoDao,
+        private val mapper: CoinMapper,
+        private val apiService: ApiService
+    ) : ChildWorkerFactory {
+        override fun create(
+            context: Context,
+            workerParameters: WorkerParameters
+        ): ListenableWorker {
+            return RefreshDataWorker(
+                context,
+                workerParameters,
+                coinInfoDao,
+                mapper,
+                apiService
+            )
         }
     }
 }
