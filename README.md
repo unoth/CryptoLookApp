@@ -1,7 +1,9 @@
-## CryptoLook App
-A real-time cryptocurrency tracking application utilizing the CryptoCompare API.
+# CryptoLook App
+**CryptoLook** is a real-time cryptocurrency tracking app powered by the CryptoCompare API.  
 
-### 📱 Screenshots
+
+
+## 📱 Screenshots
 
 | <img width="250px" src="https://github.com/unoth/CryptoLookApp/assets/96779254/5d0250f4-1f86-4b26-b4ab-f07b2f321e25" alt="CryptoLookApp_MainActivity"/> |  <img width="250px" src="https://github.com/unoth/CryptoLookApp/assets/96779254/0e0502db-29ba-4fa9-adad-0bd67c3b0475" alt="CryptoLookApp_DetailInfo"/>| 
 |:---:|:---:|
@@ -15,37 +17,38 @@ A real-time cryptocurrency tracking application utilizing the CryptoCompare API.
 
 
 
+## 🚀 Features
+
+-  Real-time tracking of popular cryptocurrencies  
+-  Detailed view with current price, daily high/low, and markets  
+-  Landscape mode support with Fragment-based UI  
+-  Background data loading using WorkManager  
+-  Clean and modular architecture using MVVM
 
 
+## 🛠️ Technology Stack
 
- ❕ ❕ ❕ UPD_1.0:
-- Architectural layers added: data, domain, presentation.
-- Mappers implemented.
-- RxJava -> Coroutines.
-- Adapter refactored.
-- Methods moved from POJO to mappers.
-- Landscape orientation support added: transitioned Activity to Fragments.
-- Background loading implemented using WorkManager.
+- **API:** [CryptoCompare](https://min-api.cryptocompare.com/)  
+- **Architecture:** Clean Architecture (MVVM — Data, Domain, Presentation layers)  
+- **DI:** Dagger 2  
+- **Async:** Kotlin Coroutines  
+- **Database:** Room  
+- **Networking:** Retrofit  
+- **UI:** Fragments, RecyclerView  
 
 ---
 
+## 📦 Changelog
+
+### v1.1
+- Implemented Dependency Injection with Dagger 2
 
 
-
-📊 Functionality: Displays the current exchange rates of the most popular cryptocurrencies with real-time updates.
-
-📲 Detailed Information: Clicking on a currency provides detailed information, including the current price, the highest and lowest prices, and the stores where the currency can be purchased.
-
-🔍 Technologies: The application is built on the MVVM architecture, uses Room for local data storage, and Retrofit for network requests.
-
-
-
-**Technology Stack:**
-
-- API: CryptoCompare
-
-- Architecture: MVVM
-
-- Database: Room
-
-- Network Requests: Retrofit
+### v1.0
+- Refactored architecture: introduced Data, Domain, and Presentation layers  
+- Implemented custom mappers  
+- Migrated from **RxJava** to **Coroutines**  
+- Moved logic from POJOs to mappers  
+- Refactored adapter  
+- Added landscape mode with Fragment layout  
+- Enabled background loading with **WorkManager**
